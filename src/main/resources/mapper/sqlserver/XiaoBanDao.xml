@@ -4,9 +4,65 @@
 
 	<select id="queryById" resultType="org.spring.springboot.domain.XiaoBan">
 		select
-		objectid as id,shape.ToString() as shape
+		<include refid="sql_field"/>
 		from ZY_XB
 		where objectid = #{id}
 	</select>
 
+
+	<sql id="sql_field">
+		objectid as id,
+		shape.ToString() as shape,
+		area,
+    	PERIMETER as perimeter,
+		XBLN_ as xbln,
+		XBLN_ID as xblnId,
+		县局 as xianju,
+		乡镇场 as xiangzhenchang,
+		行政村 as xingzhengcun,
+		林班号 as linbanhao,
+		小班号 as xiaobanhao,
+		所属县 as suoshuxian,
+		所属乡镇 as suoshuxiangzhen,
+		关键字 as keyWord,
+		面积 as mianji,
+		图幅号 as tufuhao,
+		轨道号 as guidaohao,
+		接收时间 as jieshoushijian,
+		森林类别 as senlinleibie,
+		地类 as dilei,
+		林地权属 as lindiquanshu,
+		林木权属 as linmuquanshu,
+		工程类别 as projectType,
+		林种 as linzhong,
+		事权等级 as shiquandengji,
+		保护等级 as baohudengji,
+		地貌 as dimao,
+		坡度 as podu,
+		坡位 as powei,
+		坡向 as poxiang,
+		起源 as qiyuan,
+		优势树种 as youshishuzhong,
+		龄组 as lingzu,
+		郁闭度 as yubidu,
+		经济林产期 as jingjilinchanqi,
+		每公顷株数 as meigongqingzhushu,
+		每公顷蓄积 as meigongqingchuji,
+		小班蓄积量 as xiaobanchujiliang,
+		四旁树株数 as sipangshuzhushu,
+		四旁树蓄积 as sipangshuchuji,
+		绿化株数 as lvhuahzushu,
+		绿化蓄积 as lvhuachuji,
+		散生木株数 as sanshengmuzhushu,
+		散生木蓄积 as sanshengmuchuji,
+		散生竹株数 as sanshengzhuzhushu,
+		湿地 as shidi,
+		荒漠类型 as huangmoleixing,
+		荒漠程度 as huangmochengdu,
+		沙化类型 as shahualeixing,
+		沙化程度 as shahuachengdu,
+		湿地等级 as shididengji,
+		POINT_X as pointX,
+		POINT_Y as pointY
+	</sql>
 </mapper>
