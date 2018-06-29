@@ -64,4 +64,9 @@ public class XiaoBan {
     private Integer shididengji;
     private BigDecimal pointX;
     private BigDecimal pointY;
+    private BigDecimal maxX;
+    private BigDecimal maxY;
+    private BigDecimal minX;
+    private BigDecimal minY;
+
 }

@@ -14,4 +14,6 @@ import java.util.List;
 public interface MysqlXiaoBanDao {
 
     Boolean batchSave(@Param("list") List<XiaoBan> list);
+
+    Boolean save(@Param("item") XiaoBan item);
 }
