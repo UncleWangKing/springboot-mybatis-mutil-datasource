@@ -6,7 +6,6 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -17,12 +16,12 @@ import javax.sql.DataSource;
 
 @Configuration
 // 扫描 Mapper 接口并容器管理
-@MapperScan(basePackages = MasterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
-public class MasterDataSourceConfig {
+@MapperScan(basePackages = MysqlDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
+public class MysqlDataSourceConfig {
 
-    // 精确到 master 目录，以便跟其他数据源隔离
-    static final String PACKAGE = "org.spring.springboot.dao.master";
-    static final String MAPPER_LOCATION = "classpath:mapper/master/*.xml";
+    // 精确到 mysql 目录，以便跟其他数据源隔离
+    static final String PACKAGE = "org.spring.springboot.dao.mysql";
+    static final String MAPPER_LOCATION = "classpath:mapper/mysql/*.xml";
 
     @Value("${master.datasource.url}")
     private String url;
@@ -60,7 +59,7 @@ public class MasterDataSourceConfig {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(masterDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-                .getResources(MasterDataSourceConfig.MAPPER_LOCATION));
+                .getResources(MysqlDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
     }
 }

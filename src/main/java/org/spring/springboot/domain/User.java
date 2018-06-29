@@ -1,9 +1,8 @@
 package org.spring.springboot.domain;
 
 /**
- * 用户实体类
- *
- * Created by bysocket on 07/02/2017.
+ * @author ZhangDaPang 285296372@qq.com
+ * @date 2018/6/29 11:25
  */
 public class User {
 

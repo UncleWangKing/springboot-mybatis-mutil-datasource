@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.spring.springboot.dao.cluster.CityDao">
-	<resultMap id="BaseResultMap" type="org.spring.springboot.domain.City">
+<mapper namespace="org.spring.springboot.dao.mysql.UserDao">
+	<resultMap id="BaseResultMap" type="org.spring.springboot.domain.User">
 		<result column="id" property="id" />
-		<result column="cityName" property="cityName" />
+		<result column="userName" property="userName" />
 	</resultMap>
 
-	<parameterMap id="City" type="org.spring.springboot.domain.City"/>
+	<parameterMap id="User" type="org.spring.springboot.domain.User"/>
 
 	<sql id="Base_Column_List">
-		id, cityName
+		id, userName
 	</sql>
 
 	<select id="findByName" resultMap="BaseResultMap" parameterType="integer">
 		select
 		<include refid="Base_Column_List" />
-		from city
+		from user
 		where id = #{id}
 	</select>
 

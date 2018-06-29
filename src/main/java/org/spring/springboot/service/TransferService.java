@@ -4,11 +4,10 @@ import org.spring.springboot.domain.City;
 import org.spring.springboot.domain.User;
 
 /**
- * 用户业务接口层
- *
- * Created by bysocket on 07/02/2017.
+ * @author ZhangDaPang 285296372@qq.com
+ * @date 2018/6/29 11:25
  */
-public interface UserService {
+public interface TransferService {
 
     /**
      * 根据用户名获取用户信息，包括从库的地址信息

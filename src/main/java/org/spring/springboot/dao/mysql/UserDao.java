@@ -1,13 +1,12 @@
-package org.spring.springboot.dao.master;
+package org.spring.springboot.dao.mysql;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.spring.springboot.domain.User;
 
 /**
- * 用户 DAO 接口类
- *
- * Created by bysocket on 07/02/2017.
+ * @author ZhangDaPang 285296372@qq.com
+ * @date 2018/6/29 11:25
  */
 @Mapper
 public interface UserDao {
