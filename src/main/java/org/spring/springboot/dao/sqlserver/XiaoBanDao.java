@@ -2,19 +2,15 @@ package org.spring.springboot.dao.sqlserver;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.spring.springboot.domain.City;
+import org.spring.springboot.domain.XiaoBan;
 
 /**
  * @author ZhangDaPang 285296372@qq.com
  * @date 2018/6/29 11:25
  */
 @Mapper
-public interface CityDao {
+public interface XiaoBanDao {
 
-    /**
-     * 根据城市名称，查询城市信息
-     *
-     * @param id 城市名
-     */
-    City findByName(@Param("id") Integer id);
+
+    XiaoBan queryById(@Param("id") Integer id);
 }

@@ -1,6 +1,6 @@
 package org.spring.springboot.controller;
 
-import org.spring.springboot.domain.City;
+import org.spring.springboot.domain.XiaoBan;
 import org.spring.springboot.service.TransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +24,9 @@ public class TransferController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/api/user", method = RequestMethod.GET)
-    public City findByName(@RequestParam(value = "id", required = true) Integer id) {
-        return transferService.findByName(id);
+    @RequestMapping(value = "/api/xb", method = RequestMethod.GET)
+    public XiaoBan queryById(@RequestParam(value = "id", required = true) Integer id) {
+        return transferService.queryById(id);
     }
 
 }

@@ -1,8 +1,8 @@
 package org.spring.springboot.service.impl;
 
-import org.spring.springboot.dao.sqlserver.CityDao;
+import org.spring.springboot.dao.sqlserver.XiaoBanDao;
 import org.spring.springboot.dao.mysql.UserDao;
-import org.spring.springboot.domain.City;
+import org.spring.springboot.domain.XiaoBan;
 import org.spring.springboot.service.TransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +18,12 @@ public class TransferServiceImpl implements TransferService {
     private UserDao userDao; // 主数据源
 
     @Autowired
-    private CityDao cityDao; // 从数据源
+    private XiaoBanDao xiaoBanDao; // 从数据源
 
     @Override
-    public City findByName(Integer id) {
+    public XiaoBan queryById(Integer id) {
 //        User user = userDao.findByName(id);
-        City city = cityDao.findByName(id);
-        return city;
+        XiaoBan xiaoBan = xiaoBanDao.queryById(id);
+        return xiaoBan;
     }
 }

@@ -7,12 +7,7 @@ import lombok.Data;
  * @date 2018/6/29 11:25
  */
 @Data
-public class User {
-
-    /**
-     * 城市编号
-     */
+public class XiaoBan {
     private Long id;
-
-    private String userName;
+    private String shape;
 }

@@ -1,7 +1,6 @@
 package org.spring.springboot.service;
 
-import org.spring.springboot.domain.City;
-import org.spring.springboot.domain.User;
+import org.spring.springboot.domain.XiaoBan;
 
 /**
  * @author ZhangDaPang 285296372@qq.com
@@ -9,11 +8,5 @@ import org.spring.springboot.domain.User;
  */
 public interface TransferService {
 
-    /**
-     * 根据用户名获取用户信息，包括从库的地址信息
-     *
-     * @param userName
-     * @return
-     */
-    City findByName(Integer userName);
+    XiaoBan queryById(Integer id);
 }
