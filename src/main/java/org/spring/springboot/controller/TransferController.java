@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author ZhangDaPang 285296372@qq.com
  * @date 2018/6/29 11:25
@@ -27,6 +29,11 @@ public class TransferController {
     @RequestMapping(value = "/api/xb", method = RequestMethod.GET)
     public XiaoBan queryById(@RequestParam(value = "id", required = true) Integer id) {
         return transferService.queryById(id);
+    }
+
+    @RequestMapping(value = "/api/xb/list", method = RequestMethod.GET)
+    public List<XiaoBan> queryList() {
+        return transferService.queryList();
     }
 
 }
