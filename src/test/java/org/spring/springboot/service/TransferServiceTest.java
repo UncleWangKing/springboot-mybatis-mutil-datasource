@@ -33,7 +33,6 @@ public class TransferServiceTest {
     private SqlServerXiaoBanDao sqlServerXiaoBanDao; // 从数据源
 
     @Test
-
     public void queryById() throws Exception {
         XiaoBan xb = sqlServerXiaoBanDao.queryById(1);
         System.out.println(xb);

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.sqlserver.SqlServerLinBanDao">
+
+	<select id="queryList" resultType="org.spring.springboot.domain.LinBan">
+		select
+		<include refid="sql_field"/>
+		from ZY_LB
+	</select>
+
+	<select id="queryById" resultType="org.spring.springboot.domain.LinBan">
+		select
+		<include refid="sql_field"/>
+		from ZY_LB
+		where objectid = #{id}
+	</select>
+
+
+	<sql id="sql_field">
+		objectid as id,
+		shape.ToString() as shape,
+		县局 as xianju,
+		乡镇场 as  xiangzhenchang,
+		行政村 as xingzhengcun,
+		林班号 as linbanhao,
+		关键字 as keyWord,
+		所属县 as suoshuxian,
+	  	功能区 as gongnengqu,
+	  	mj
+	</sql>
+</mapper>
