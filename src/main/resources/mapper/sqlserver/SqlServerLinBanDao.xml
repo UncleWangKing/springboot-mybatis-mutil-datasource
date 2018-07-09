@@ -26,6 +26,6 @@
 		关键字 as keyWord,
 		所属县 as suoshuxian,
 	  	功能区 as gongnengqu,
-	  	mj
+	  	mj as mianji
 	</sql>
 </mapper>

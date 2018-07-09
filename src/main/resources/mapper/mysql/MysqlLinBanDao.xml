@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.mysql.MysqlLinBanDao">
+
+	<insert id="batchSave" parameterType="org.spring.springboot.domain.LinBan">
+		insert into resource_lb
+		(
+			id,
+			shape,
+			xianju,
+			xiangzhenchang,
+			xingzhengcun,
+			linbanhao,
+			keyWord,
+			suoshuxian,
+			gongnengqu,
+			mianji,
+			maxX,
+			maxY,
+			minX,
+			minY
+		)
+		values
+		<foreach collection="list" item="item" separator=",">
+		(
+			#{item.id},
+			GeomFromText(#{item.shape}),
+			#{item.xianju},
+			#{item.xiangzhenchang},
+			#{item.xingzhengcun},
+			#{item.linbanhao},
+			#{item.keyWord},
+			#{item.suoshuxian},
+			#{item.gongnengqu},
+			#{item.mianji},
+			#{item.maxX},
+			#{item.maxY},
+			#{item.minX},
+			#{item.minY}
+		)
+		</foreach>
+	</insert>
+
+	<insert id="save" parameterType="org.spring.springboot.domain.LinBan">
+		insert into resource_lb
+		(
+			id,
+			shape,
+			xianju,
+			xiangzhenchang,
+			xingzhengcun,
+			linbanhao,
+			keyWord,
+			suoshuxian,
+			gongnengqu,
+			mianji,
+			maxX,
+			maxY,
+			minX,
+			minY
+		)
+		VALUES
+		(
+			#{item.id},
+			GeomFromText(#{item.shape}),
+			#{item.xianju},
+			#{item.xiangzhenchang},
+			#{item.xingzhengcun},
+			#{item.linbanhao},
+			#{item.keyWord},
+			#{item.suoshuxian},
+			#{item.gongnengqu},
+			#{item.mianji},
+			#{item.maxX},
+			#{item.maxY},
+			#{item.minX},
+			#{item.minY}
+		)
+	</insert>
+
+</mapper>

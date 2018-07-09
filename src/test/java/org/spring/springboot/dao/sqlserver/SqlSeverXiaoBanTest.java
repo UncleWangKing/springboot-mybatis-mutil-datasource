@@ -1,4 +1,4 @@
-package org.spring.springboot.service;
+package org.spring.springboot.dao.sqlserver;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import java.util.List;
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TransferServiceTest {
+public class SqlSeverXiaoBanTest {
     @Autowired
     private MysqlXiaoBanDao mysqlXiaoBanDao; // 主数据源
 

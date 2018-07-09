@@ -19,5 +19,9 @@ public class LinBan {
     private String keyWord;
     private Integer suoshuxian;
     private Integer gongnengqu;
-    private BigDecimal mj;
+    private BigDecimal mianji;
+    private BigDecimal maxX;
+    private BigDecimal maxY;
+    private BigDecimal minX;
+    private BigDecimal minY;
 }

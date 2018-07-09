@@ -1,5 +1,6 @@
 package org.spring.springboot.util;
 
+import org.spring.springboot.domain.LinBan;
 import org.spring.springboot.domain.XiaoBan;
 
 import java.math.BigDecimal;
@@ -53,6 +54,43 @@ public class PositionUtil {
         xiaoban.setMinX(minX);
         xiaoban.setMaxY(maxY);
         xiaoban.setMinY(minY);
+    }
+
+    public static void setFourPos(LinBan linBan){
+        String str = linBan.getShape();
+        str = getReplacePolygon(str);
+        if(str.contains("P") || str.contains("p"))
+            System.out.println(111);
+        BigDecimal maxX = new BigDecimal(Double.MIN_VALUE);
+        BigDecimal maxY = new BigDecimal(Double.MIN_VALUE);
+        BigDecimal minX = new BigDecimal(Double.MAX_VALUE);
+        BigDecimal minY = new BigDecimal(Double.MAX_VALUE);
+        String[] split = str.split(",");
+        for (int i = 0; i < split.length; i++) {
+            String tempStr = split[i];
+            String[] tempSplit = tempStr.split(" ");
+            String[] finalSplit = new String[2];
+            if("".equals(tempSplit[0]))
+                System.arraycopy(tempSplit, 1, finalSplit, 0, 2);
+            else
+                finalSplit = tempSplit;
+
+
+            for (int j = 0; j < finalSplit.length; j++) {
+                BigDecimal temp = new BigDecimal(finalSplit[j]);
+                if(0 == j){//x
+                    maxX = maxX.max(temp);
+                    minX = minX.min(temp);
+                }else {//y
+                    maxY = maxY.max(temp);
+                    minY = minY.min(temp);
+                }
+            }
+        }
+        linBan.setMaxX(maxX);
+        linBan.setMinX(minX);
+        linBan.setMaxY(maxY);
+        linBan.setMinY(minY);
     }
 
     private static String getReplacePolygon(String str){
