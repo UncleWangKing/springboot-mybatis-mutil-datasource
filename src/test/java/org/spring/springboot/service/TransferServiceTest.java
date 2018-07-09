@@ -8,12 +8,12 @@ import org.spring.springboot.Application;
 import org.spring.springboot.dao.mysql.MysqlXiaoBanDao;
 import org.spring.springboot.dao.sqlserver.SqlServerXiaoBanDao;
 import org.spring.springboot.domain.XiaoBan;
+import org.spring.springboot.util.PositionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,11 +49,11 @@ public class TransferServiceTest {
     public void batchSave() throws Exception {
         List<XiaoBan> list = new ArrayList<XiaoBan>();
         XiaoBan xb = sqlServerXiaoBanDao.queryById(1);
-        setFourPos(xb);
+        PositionUtil.setFourPos(xb);
         list.add(xb);
         XiaoBan xb2 = sqlServerXiaoBanDao.queryById(2);
         list.add(xb2);
-        setFourPos(xb2);
+        PositionUtil.setFourPos(xb2);
         mysqlXiaoBanDao.batchSave(list);
 //        mysqlXiaoBanDao.save(xb);
     }
@@ -61,7 +61,7 @@ public class TransferServiceTest {
     @Test
     public void transfer() throws Exception {
         List<XiaoBan> resultList = sqlServerXiaoBanDao.queryList();
-        resultList.forEach(item->setFourPos(item));
+        resultList.forEach(item->PositionUtil.setFourPos(item));
         int i = 0;
         int step = 1000;
         while (i*step < resultList.size()) {
@@ -74,50 +74,5 @@ public class TransferServiceTest {
             System.out.println(i*step + "-" + (i+1)*step +" 条入库");
             i++;
         }
-    }
-
-    public void setFourPos(XiaoBan xiaoban){
-        String str = xiaoban.getShape();
-        str = getReplacePolygon(str);
-        if(str.contains("P") || str.contains("p"))
-            System.out.println(111);
-        BigDecimal maxX = new BigDecimal(Double.MIN_VALUE);
-        BigDecimal maxY = new BigDecimal(Double.MIN_VALUE);
-        BigDecimal minX = new BigDecimal(Double.MAX_VALUE);
-        BigDecimal minY = new BigDecimal(Double.MAX_VALUE);
-        String[] split = str.split(",");
-        for (int i = 0; i < split.length; i++) {
-            String tempStr = split[i];
-            String[] tempSplit = tempStr.split(" ");
-            String[] finalSplit = new String[2];
-            if("".equals(tempSplit[0]))
-                System.arraycopy(tempSplit, 1, finalSplit, 0, 2);
-            else
-                finalSplit = tempSplit;
-
-
-            for (int j = 0; j < finalSplit.length; j++) {
-                BigDecimal temp = new BigDecimal(finalSplit[j]);
-                if(0 == j){//x
-                    maxX = maxX.max(temp);
-                    minX = minX.min(temp);
-                }else {//y
-                    maxY = maxY.max(temp);
-                    minY = minY.min(temp);
-                }
-            }
-        }
-        xiaoban.setMaxX(maxX);
-        xiaoban.setMinX(minX);
-        xiaoban.setMaxY(maxY);
-        xiaoban.setMinY(minY);
-    }
-
-    private String getReplacePolygon(String str){
-        return str.replace("POLYGON ((", "")
-                .replace("((", "")
-                .replace("))", "")
-                .replace(")", "")
-                .replace("(", "");
     }
 }
