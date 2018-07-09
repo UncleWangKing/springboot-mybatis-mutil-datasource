@@ -67,7 +67,7 @@
 		<foreach collection="list" item="item" separator=",">
 		(
 			#{item.id},
-			#{item.shape},
+			GeomFromText(#{item.shape}),
 			#{item.area},
 			#{item.perimeter},
 			#{item.xbln},
@@ -191,7 +191,7 @@
 		VALUES
 		(
 		#{item.id},
-		#{item.shape},
+		GeomFromText(#{item.shape}),
 		#{item.area},
 		#{item.perimeter},
 		#{item.xbln},

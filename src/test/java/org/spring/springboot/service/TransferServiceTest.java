@@ -49,30 +49,18 @@ public class TransferServiceTest {
     public void batchSave() throws Exception {
         List<XiaoBan> list = new ArrayList<XiaoBan>();
         XiaoBan xb = sqlServerXiaoBanDao.queryById(1);
-        xb.setShape(xb.getShape()
-                .replace("POLYGON ((", "")
-                .replace("((", "")
-                .replace("))", "")
-                .replace(")", "")
-                .replace("(", ""));
+        setFourPos(xb);
         list.add(xb);
-//        XiaoBan xb2 = sqlServerXiaoBanDao.queryById(2);
-//        xb2.setShape(xb2.getShape().replace("POLYGON ((", "").replace("))", ""));
-//        list.add(xb2);
-//        mysqlXiaoBanDao.batchSave(list);
+        XiaoBan xb2 = sqlServerXiaoBanDao.queryById(2);
+        list.add(xb2);
+        setFourPos(xb2);
+        mysqlXiaoBanDao.batchSave(list);
 //        mysqlXiaoBanDao.save(xb);
     }
 
     @Test
     public void transfer() throws Exception {
         List<XiaoBan> resultList = sqlServerXiaoBanDao.queryList();
-        resultList.forEach(item->item.setShape(item.getShape()
-                .replace("POLYGON ((", "")
-                .replace("((", "")
-                .replace("))", "")
-                .replace(")", "")
-//                .replace("P", "")
-                .replace("(", "")));
         resultList.forEach(item->setFourPos(item));
         int i = 0;
         int step = 1000;
@@ -90,6 +78,7 @@ public class TransferServiceTest {
 
     public void setFourPos(XiaoBan xiaoban){
         String str = xiaoban.getShape();
+        str = getReplacePolygon(str);
         if(str.contains("P") || str.contains("p"))
             System.out.println(111);
         BigDecimal maxX = new BigDecimal(Double.MIN_VALUE);
@@ -122,6 +111,13 @@ public class TransferServiceTest {
         xiaoban.setMinX(minX);
         xiaoban.setMaxY(maxY);
         xiaoban.setMinY(minY);
-//        return maxY.toString() + "," + maxX.toString() + "," + minY.toString() + "," + minX.toString();
+    }
+
+    private String getReplacePolygon(String str){
+        return str.replace("POLYGON ((", "")
+                .replace("((", "")
+                .replace("))", "")
+                .replace(")", "")
+                .replace("(", "");
     }
 }
