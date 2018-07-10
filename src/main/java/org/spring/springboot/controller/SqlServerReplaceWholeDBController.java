@@ -1,37 +1,23 @@
-package org.spring.springboot.dao.sqlserver;
+package org.spring.springboot.controller;
+
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
-import org.spring.springboot.Application;
-import org.spring.springboot.dao.mysql.MysqlLinBanDao;
-import org.spring.springboot.domain.LinBan;
+import org.spring.springboot.dao.sqlserver.SqlServerReplaceWholeDBDao;
 import org.spring.springboot.domain.TableInfo;
-import org.spring.springboot.util.PositionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.sound.midi.Soundbank;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-/**
- * @author ZhangDaPang 285296372@qq.com
- * @date 2018/7/9 15:46
- */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@EnableAutoConfiguration
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@RestController
+@RequestMapping("/test")
 @Slf4j
-public class SqlServerReplaceWholeDBDaoTest {
+public class SqlServerReplaceWholeDBController {
     private List<String> excludeTables = Arrays.asList("By", "flv", "GG", "KKK");
     private List<String> contentFieldTypes = Arrays.asList("varchar", "nvarchar");
     private String keyWord = "祁连山";
@@ -39,30 +25,8 @@ public class SqlServerReplaceWholeDBDaoTest {
     @Autowired
     private SqlServerReplaceWholeDBDao sqlServerReplaceWholeDBDao; // 主数据源
 
-    @Test
-    public void queryAllTableName() throws Exception {
-        List<String> list = sqlServerReplaceWholeDBDao.queryAllTableName();
-        list.forEach(s->log.info(s));
-    }
-    @Test
-    public void queryInfoByTableName() throws Exception {
-        List<TableInfo> list = sqlServerReplaceWholeDBDao.queryInfoByTableName("sys_DeptInfo");
-        list.forEach(System.out::println);
-    }
-
-    @Test
-    public void queryField() throws Exception {
-        List<String> list = sqlServerReplaceWholeDBDao.queryField("MainMenuConfig", "'Group'", "%%");
-        list.forEach(s->log.info(s));
-    }
-
-    @Test
-    public void updateField() throws Exception {
-        System.out.println(sqlServerReplaceWholeDBDao.updateField("巡护排班", "备注", "大王叫我来巡山咯祁连山", "大王叫我来巡山咯兴隆山"));
-    }
-
-    @Test
-    public void transform() throws Exception{
+    @RequestMapping(method = RequestMethod.GET)
+    public List<String> transform() throws Exception{
         long start = System.currentTimeMillis();
         long success = 0;
         long failure = 0;
@@ -99,8 +63,16 @@ public class SqlServerReplaceWholeDBDaoTest {
                 }
             }
         }
-        System.out.println("成功修改" + success + " 处");
-        System.out.println("失败修改" + failure + " 处");
-        System.out.println("总共耗时:" + (System.currentTimeMillis() - start) + "ms");
+        List<String> resultList = new ArrayList<>();
+        String str1 = "成功修改" + success + " 处";
+        String str2 = "失败修改" + failure + " 处";
+        String str3 = "总共耗时:" + (System.currentTimeMillis() - start) + "ms";
+        resultList.add(str1);
+        resultList.add(str2);
+        resultList.add(str3);
+        System.out.println(str1);
+        System.out.println(str2);
+        System.out.println(str3);
+        return resultList;
     }
 }
