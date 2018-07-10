@@ -4,11 +4,35 @@
 
 	<select id="queryAllTableName" resultType="string">
 		select
-		<include refid="sql_field"/>
-		from sys.tables
+			name
+		from
+			sys.tables
 	</select>
 
-	<sql id="sql_field">
-		name
-	</sql>
+	<select id="queryInfoByTableName" resultType="org.spring.springboot.domain.TableInfo">
+		select
+			column_name,
+			 data_type
+		from
+			INFORMATION_SCHEMA.columns
+		where
+			TABLE_NAME=#{tableName}
+	</select>
+
+	<select id="queryField" resultType="string">
+		select
+			${fieldName}
+		from
+			${tableName}
+		where
+			${fieldName} LIKE #{keyWord}
+	</select>
+
+	<update id="updateField">
+		update ${tableName}
+		<set>
+			${fieldName} = #{newVal}
+		</set>
+		where ${fieldName} = #{oldVal}
+	</update>
 </mapper>
