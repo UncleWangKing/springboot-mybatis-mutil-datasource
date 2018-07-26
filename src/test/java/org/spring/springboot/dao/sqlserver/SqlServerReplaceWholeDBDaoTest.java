@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
+ * 小工具，作用是替换整个库里所有表的所有指定类型字段的某个关键字
  * @author ZhangDaPang 285296372@qq.com
  * @date 2018/7/9 15:46
  */
