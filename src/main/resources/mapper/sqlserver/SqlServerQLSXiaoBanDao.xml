@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.sqlserver.SqlServerQLSXiaoBanDao">
+
+	<select id="queryList" resultType="org.spring.springboot.domain.QLSXiaoBan">
+		select
+		<include refid="sql_field"/>
+		from 小班
+	</select>
+
+	<select id="queryById" resultType="map">
+		select
+		<include refid="sql_field"/>
+		from 小班
+		where MwOID = #{id}
+	</select>
+
+
+	<sql id="sql_field">
+		*
+	</sql>
+</mapper>
