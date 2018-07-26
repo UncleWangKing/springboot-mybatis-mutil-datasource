@@ -10,7 +10,7 @@ import java.util.Date;
  * @date 2018/6/29 11:25
  */
 @Data
-public class XiaoBan {
+public class HLSXiaoBan {
     private Long id;
     private String shape;
     private BigDecimal area;

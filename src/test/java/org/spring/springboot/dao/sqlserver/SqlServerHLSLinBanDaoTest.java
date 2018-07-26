@@ -6,9 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.spring.springboot.Application;
 import org.spring.springboot.dao.mysql.MysqlLinBanDao;
-import org.spring.springboot.dao.mysql.MysqlXiaoBanDao;
-import org.spring.springboot.domain.LinBan;
-import org.spring.springboot.domain.XiaoBan;
+import org.spring.springboot.domain.HLSLinBan;
 import org.spring.springboot.util.PositionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -25,7 +23,7 @@ import java.util.List;
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SqlServerLinBanDaoTest {
+public class SqlServerHLSLinBanDaoTest {
     @Autowired
     private MysqlLinBanDao mysqlLinBanDao; // 主数据源
 
@@ -34,7 +32,7 @@ public class SqlServerLinBanDaoTest {
 
     @Test
     public void queryById() throws Exception {
-        LinBan lb = sqlServerLinBanDao.queryById(1);
+        HLSLinBan lb = sqlServerLinBanDao.queryById(1);
         System.out.println(lb);
         PositionUtil.setFourPos(lb);
         mysqlLinBanDao.save(lb);
@@ -42,12 +40,12 @@ public class SqlServerLinBanDaoTest {
 
     @Test
     public void transfer() throws Exception {
-        List<LinBan> resultList = sqlServerLinBanDao.queryList();
+        List<HLSLinBan> resultList = sqlServerLinBanDao.queryList();
         resultList.forEach(item->PositionUtil.setFourPos(item));
         int i = 0;
         int step = 100;
         while (i*step < resultList.size()) {
-            List<LinBan> saveList = null;
+            List<HLSLinBan> saveList = null;
             if(i*step + step < resultList.size())
                 saveList = resultList.subList(i*step, i*step + step);
             else

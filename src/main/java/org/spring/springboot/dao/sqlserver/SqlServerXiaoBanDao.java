@@ -2,7 +2,7 @@ package org.spring.springboot.dao.sqlserver;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.spring.springboot.domain.XiaoBan;
+import org.spring.springboot.domain.HLSXiaoBan;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public interface SqlServerXiaoBanDao {
 
 
-    XiaoBan queryById(@Param("id") Integer id);
+    HLSXiaoBan queryById(@Param("id") Integer id);
 
-    List<XiaoBan> queryList();
+    List<HLSXiaoBan> queryList();
 }

@@ -6,17 +6,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.spring.springboot.Application;
-import org.spring.springboot.dao.mysql.MysqlLinBanDao;
-import org.spring.springboot.domain.LinBan;
 import org.spring.springboot.domain.TableInfo;
-import org.spring.springboot.util.PositionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.sound.midi.Soundbank;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;

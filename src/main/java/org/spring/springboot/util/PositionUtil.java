@@ -1,7 +1,7 @@
 package org.spring.springboot.util;
 
-import org.spring.springboot.domain.LinBan;
-import org.spring.springboot.domain.XiaoBan;
+import org.spring.springboot.domain.HLSLinBan;
+import org.spring.springboot.domain.HLSXiaoBan;
 
 import java.math.BigDecimal;
 
@@ -19,7 +19,7 @@ public class PositionUtil {
         System.out.println();
     }
 
-    public static void setFourPos(XiaoBan xiaoban){
+    public static void setFourPos(HLSXiaoBan xiaoban){
         String str = xiaoban.getShape();
         str = getReplacePolygon(str);
         if(str.contains("P") || str.contains("p"))
@@ -56,8 +56,8 @@ public class PositionUtil {
         xiaoban.setMinY(minY);
     }
 
-    public static void setFourPos(LinBan linBan){
-        String str = linBan.getShape();
+    public static void setFourPos(HLSLinBan HLSLinBan){
+        String str = HLSLinBan.getShape();
         str = getReplacePolygon(str);
         if(str.contains("P") || str.contains("p"))
             System.out.println(111);
@@ -87,10 +87,10 @@ public class PositionUtil {
                 }
             }
         }
-        linBan.setMaxX(maxX);
-        linBan.setMinX(minX);
-        linBan.setMaxY(maxY);
-        linBan.setMinY(minY);
+        HLSLinBan.setMaxX(maxX);
+        HLSLinBan.setMinX(minX);
+        HLSLinBan.setMaxY(maxY);
+        HLSLinBan.setMinY(minY);
     }
 
     private static String getReplacePolygon(String str){

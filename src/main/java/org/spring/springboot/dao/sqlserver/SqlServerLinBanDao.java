@@ -2,7 +2,7 @@ package org.spring.springboot.dao.sqlserver;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.spring.springboot.domain.LinBan;
+import org.spring.springboot.domain.HLSLinBan;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public interface SqlServerLinBanDao {
 
 
-    LinBan queryById(@Param("id") Integer id);
+    HLSLinBan queryById(@Param("id") Integer id);
 
-    List<LinBan> queryList();
+    List<HLSLinBan> queryList();
 }

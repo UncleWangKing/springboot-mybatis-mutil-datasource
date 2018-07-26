@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * @date 2018/7/9 15:32
  */
 @Data
-public class LinBan {
+public class HLSLinBan {
     private Long id;
     private String shape;
     private Integer xianju;

@@ -6,8 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.spring.springboot.Application;
 import org.spring.springboot.dao.mysql.MysqlXiaoBanDao;
-import org.spring.springboot.dao.sqlserver.SqlServerXiaoBanDao;
-import org.spring.springboot.domain.XiaoBan;
+import org.spring.springboot.domain.HLSXiaoBan;
 import org.spring.springboot.util.PositionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -25,7 +24,7 @@ import java.util.List;
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SqlSeverXiaoBanTest {
+public class SqlSeverHLSXiaoBanTest {
     @Autowired
     private MysqlXiaoBanDao mysqlXiaoBanDao; // 主数据源
 
@@ -34,23 +33,23 @@ public class SqlSeverXiaoBanTest {
 
     @Test
     public void queryById() throws Exception {
-        XiaoBan xb = sqlServerXiaoBanDao.queryById(1);
+        HLSXiaoBan xb = sqlServerXiaoBanDao.queryById(1);
         System.out.println(xb);
     }
 
     @Test
     public void queryList() throws Exception {
-        List<XiaoBan> list = sqlServerXiaoBanDao.queryList();
+        List<HLSXiaoBan> list = sqlServerXiaoBanDao.queryList();
         System.out.println(list.size());
     }
 
     @Test
     public void batchSave() throws Exception {
-        List<XiaoBan> list = new ArrayList<XiaoBan>();
-        XiaoBan xb = sqlServerXiaoBanDao.queryById(1);
+        List<HLSXiaoBan> list = new ArrayList<HLSXiaoBan>();
+        HLSXiaoBan xb = sqlServerXiaoBanDao.queryById(1);
         PositionUtil.setFourPos(xb);
         list.add(xb);
-        XiaoBan xb2 = sqlServerXiaoBanDao.queryById(2);
+        HLSXiaoBan xb2 = sqlServerXiaoBanDao.queryById(2);
         list.add(xb2);
         PositionUtil.setFourPos(xb2);
         mysqlXiaoBanDao.batchSave(list);
@@ -59,12 +58,12 @@ public class SqlSeverXiaoBanTest {
 
     @Test
     public void transfer() throws Exception {
-        List<XiaoBan> resultList = sqlServerXiaoBanDao.queryList();
+        List<HLSXiaoBan> resultList = sqlServerXiaoBanDao.queryList();
         resultList.forEach(item->PositionUtil.setFourPos(item));
         int i = 0;
         int step = 1000;
         while (i*step < resultList.size()) {
-            List<XiaoBan> saveList = null;
+            List<HLSXiaoBan> saveList = null;
             if(i*step + step < resultList.size())
                 saveList = resultList.subList(i*step, i*step + step);
             else

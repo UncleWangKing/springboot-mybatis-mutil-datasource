@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.spring.springboot.dao.mysql.MysqlXiaoBanDao">
 
-	<insert id="batchSave" parameterType="org.spring.springboot.domain.XiaoBan">
+	<insert id="batchSave" parameterType="org.spring.springboot.domain.HLSXiaoBan">
 		insert into resource_xb
 		(
 		  id,
@@ -127,7 +127,7 @@
 		</foreach>
 	</insert>
 
-	<insert id="save" parameterType="org.spring.springboot.domain.XiaoBan">
+	<insert id="save" parameterType="org.spring.springboot.domain.HLSXiaoBan">
 		insert into resource_xb
 		(
 		id,

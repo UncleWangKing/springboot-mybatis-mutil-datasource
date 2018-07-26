@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.spring.springboot.dao.sqlserver.SqlServerLinBanDao">
 
-	<select id="queryList" resultType="org.spring.springboot.domain.LinBan">
+	<select id="queryList" resultType="org.spring.springboot.domain.HLSLinBan">
 		select
 		<include refid="sql_field"/>
 		from ZY_LB
 	</select>
 
-	<select id="queryById" resultType="org.spring.springboot.domain.LinBan">
+	<select id="queryById" resultType="org.spring.springboot.domain.HLSLinBan">
 		select
 		<include refid="sql_field"/>
 		from ZY_LB

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.spring.springboot.dao.mysql.MysqlLinBanDao">
 
-	<insert id="batchSave" parameterType="org.spring.springboot.domain.LinBan">
+	<insert id="batchSave" parameterType="org.spring.springboot.domain.HLSLinBan">
 		insert into resource_lb
 		(
 			id,
@@ -41,7 +41,7 @@
 		</foreach>
 	</insert>
 
-	<insert id="save" parameterType="org.spring.springboot.domain.LinBan">
+	<insert id="save" parameterType="org.spring.springboot.domain.HLSLinBan">
 		insert into resource_lb
 		(
 			id,

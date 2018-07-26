@@ -2,7 +2,7 @@ package org.spring.springboot.dao.mysql;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.spring.springboot.domain.XiaoBan;
+import org.spring.springboot.domain.HLSXiaoBan;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @Mapper
 public interface MysqlXiaoBanDao {
 
-    Boolean batchSave(@Param("list") List<XiaoBan> list);
+    Boolean batchSave(@Param("list") List<HLSXiaoBan> list);
 
-    Boolean save(@Param("item") XiaoBan item);
+    Boolean save(@Param("item") HLSXiaoBan item);
 }

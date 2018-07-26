@@ -2,7 +2,6 @@ package org.spring.springboot.dao.sqlserver;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.spring.springboot.domain.LinBan;
 import org.spring.springboot.domain.TableInfo;
 
 import java.util.List;

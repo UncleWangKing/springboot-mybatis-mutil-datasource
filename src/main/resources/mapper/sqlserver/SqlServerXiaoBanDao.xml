@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.spring.springboot.dao.sqlserver.SqlServerXiaoBanDao">
 
-	<select id="queryList" resultType="org.spring.springboot.domain.XiaoBan">
+	<select id="queryList" resultType="org.spring.springboot.domain.HLSXiaoBan">
 		select
 		<include refid="sql_field"/>
 		from ZY_XB
 	</select>
 
-	<select id="queryById" resultType="org.spring.springboot.domain.XiaoBan">
+	<select id="queryById" resultType="org.spring.springboot.domain.HLSXiaoBan">
 		select
 		<include refid="sql_field"/>
 		from ZY_XB

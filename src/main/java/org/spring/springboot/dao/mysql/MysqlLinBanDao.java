@@ -2,8 +2,7 @@ package org.spring.springboot.dao.mysql;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.spring.springboot.domain.LinBan;
-import org.spring.springboot.domain.XiaoBan;
+import org.spring.springboot.domain.HLSLinBan;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
 @Mapper
 public interface MysqlLinBanDao {
 
-    Boolean batchSave(@Param("list") List<LinBan> list);
+    Boolean batchSave(@Param("list") List<HLSLinBan> list);
 
-    Boolean save(@Param("item") LinBan item);
+    Boolean save(@Param("item") HLSLinBan item);
 }
