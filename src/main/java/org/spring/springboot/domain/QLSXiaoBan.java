@@ -14,7 +14,7 @@ import java.util.Date;
 @Accessors(chain = true)
 public class QLSXiaoBan {
     private Long id;//MwOID
-    private String imageUrl;//MwGeometry 图片需要转静态
+    private String image;//MwGeometry 图片需要转静态
     private Long checkedUserId;//MwCheckedUserID
     private Long editState;//MwEditState
     private Long userId;//MwUserID
