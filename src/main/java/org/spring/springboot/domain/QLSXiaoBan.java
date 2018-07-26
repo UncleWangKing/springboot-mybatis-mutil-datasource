@@ -53,8 +53,8 @@ public class QLSXiaoBan {
     private String shiQuanClass;//SHI_QUAN_D 事权等级
     private String shengTaiQuWei;//SHT_QW 生态区位
     private String guoJiaJiGongYiLinBaoHuClass;//GJGYL_BHDJ 国家级公益林保护等级
-    private String GongChengType;//G_CHENG_LB 工程类别
-    private String LingZu;//LING_ZU 林组
+    private String gongChengType;//G_CHENG_LB 工程类别
+    private String lingZu;//LING_ZU 林组
     private BigDecimal yuBiDu;//YU_BI_DU 郁闭度
     private String youShiShuZhong;//YOU_SHI_SZ 优势树种
     private BigDecimal pingJunXiongJing;//PING_JUN_X 平均胸径
@@ -115,7 +115,7 @@ public class QLSXiaoBan {
     private String disasterClassName;//DISASTER_N 灾害等级-名
     private String linDiZhiLiangClassName;//ZL_DJ_N 林地质量等级-名
     private String linDiWidthName;//BC_LD_N 林宽度-名
-    private String linDiLengName;//SFNRLD_N 林地长度-名
+    private String guiHuaLinDiName;//SFNRLD_N 林地长度-名
     private String zhengYiName;//SFZY_N 是否争议-名
     private String youShiShuZhongName;//YOU_SHI__1 优势树种-名
     private String guiHuaLinZhongName;//GH_LZ_N 规划林种-名
