@@ -53,7 +53,7 @@ public class SqlSeverHLSXiaoBanTest {
         list.add(xb2);
         PositionUtil.setFourPos(xb2);
         mysqlXiaoBanDao.batchSave(list);
-//        mysqlXiaoBanDao.save(xb);
+//        mysqlXiaoBanDao.saveAnimalAll(xb);
     }
 
     @Test

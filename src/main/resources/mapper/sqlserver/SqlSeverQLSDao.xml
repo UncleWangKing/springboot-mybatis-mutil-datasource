@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.sqlserver.SqlSeverQLSDao">
+
+	<select id="queryList" resultType="map">
+		select
+		*
+		from res_Animal_All
+	</select>
+
+	<select id="queryAnimalList" resultType="map">
+		select
+		*
+		from res_AnimalList
+	</select>
+
+	<select id="queryPlantList" resultType="map">
+		select
+		*
+		from res_PlantList
+	</select>
+
+	<insert id="saveAnimalAll" parameterType="map">
+		insert into res_Animal_All
+		(
+		MwOID,
+		ID,
+		种群数量,
+		种名,
+		记录时间
+		)
+		VALUES
+		(
+		#{item.MwOID},
+		#{item.ID},
+		#{item.number},
+		#{item.物种},
+		#{item.recordDate}
+		)
+	</insert>
+
+	<insert id="savePlantAll" parameterType="map">
+		insert into res_Plant_All
+		(
+		MwOID,
+		ID,
+		KeyID,
+		种名,
+		记录时间,
+		株数
+		)
+		VALUES
+		(
+		#{item.MwOID},
+		#{item.ID},
+		#{item.KeyID},
+		#{item.物种},
+		#{item.recordDate},
+		#{item.zhushu}
+		)
+	</insert>
+</mapper>
