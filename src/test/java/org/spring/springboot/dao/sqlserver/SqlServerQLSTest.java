@@ -62,6 +62,7 @@ public class SqlServerQLSTest {
             dat.setTime(dat.getTime() + ((long) random.nextInt(6))*60l*60*60*10*365*24);
             map.put("recordDate",dat);
             map.put("number", random.nextInt(1500) + random.nextInt(100));
+            map.put("suoshubaohuqu", "甘肃祁连山国家级自然保护区");
             sqlSeverQLSDao.saveAnimalAll(map);
         }
     }
@@ -81,6 +82,7 @@ public class SqlServerQLSTest {
             map.put("recordDate",dat);
 //            String [] numbers = {"稀少","极其稀少","不多","较多"};
             map.put("zhushu", random.nextInt(1000));
+            map.put("suoshubaohuqu", "甘肃祁连山国家级自然保护区");
             sqlSeverQLSDao.savePlantAll(map);
         }
     }

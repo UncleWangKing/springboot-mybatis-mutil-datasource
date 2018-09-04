@@ -28,7 +28,8 @@
 		种群数量,
 		种名,
 		记录时间,
-		保护级别
+		保护级别,
+		所属保护区
 		)
 		VALUES
 		(
@@ -37,7 +38,8 @@
 		#{item.number},
 		#{item.物种},
 		#{item.recordDate},
-		#{item.保护级别}
+		#{item.保护级别},
+		#{item.suoshubaohuqu}
 		)
 	</insert>
 
@@ -50,7 +52,8 @@
 		种名,
 		记录时间,
 		株数,
-		保护级别
+		保护级别,
+		所属保护区
 		)
 		VALUES
 		(
@@ -60,7 +63,8 @@
 		#{item.物种},
 		#{item.recordDate},
 		#{item.zhushu},
-		#{item.保护级别}
+		#{item.保护级别},
+		#{item.suoshubaohuqu}
 		)
 	</insert>
 </mapper>
