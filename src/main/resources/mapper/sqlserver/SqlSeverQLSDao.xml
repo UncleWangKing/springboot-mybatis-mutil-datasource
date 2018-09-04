@@ -27,7 +27,8 @@
 		ID,
 		种群数量,
 		种名,
-		记录时间
+		记录时间,
+		保护级别
 		)
 		VALUES
 		(
@@ -35,7 +36,8 @@
 		#{item.ID},
 		#{item.number},
 		#{item.物种},
-		#{item.recordDate}
+		#{item.recordDate},
+		#{item.保护级别}
 		)
 	</insert>
 
@@ -47,7 +49,8 @@
 		KeyID,
 		种名,
 		记录时间,
-		株数
+		株数,
+		保护级别
 		)
 		VALUES
 		(
@@ -56,7 +59,8 @@
 		#{item.KeyID},
 		#{item.物种},
 		#{item.recordDate},
-		#{item.zhushu}
+		#{item.zhushu},
+		#{item.保护级别}
 		)
 	</insert>
 </mapper>
