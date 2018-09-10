@@ -57,6 +57,13 @@
             <version>6.4.0.jre8</version>
         </dependency>
 
+        <!-- Postgresql 连接驱动依赖 -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
+
         <!-- Druid 数据连接池依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>

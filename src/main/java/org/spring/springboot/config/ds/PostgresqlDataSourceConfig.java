@@ -15,27 +15,27 @@ import javax.sql.DataSource;
 
 @Configuration
 // 扫描 Mapper 接口并容器管理
-@MapperScan(basePackages = SqlServerDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "sqlserverSqlSessionFactory")
-public class SqlServerDataSourceConfig {
+@MapperScan(basePackages = PostgresqlDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "postgresqlSqlSessionFactory")
+public class PostgresqlDataSourceConfig {
 
-    // 精确到 sqlserver 目录，以便跟其他数据源隔离
-    static final String PACKAGE = "org.spring.springboot.dao.sqlserver";
-    static final String MAPPER_LOCATION = "classpath:mapper/sqlserver/*.xml";
+    // 精确到 postgresql 目录，以便跟其他数据源隔离
+    static final String PACKAGE = "org.spring.springboot.dao.postgresql";
+    static final String MAPPER_LOCATION = "classpath:mapper/postgresql/*.xml";
 
-    @Value("${sqlserver.datasource.url}")
+    @Value("${postgresql.datasource.url}")
     private String url;
 
-    @Value("${sqlserver.datasource.username}")
+    @Value("${postgresql.datasource.username}")
     private String user;
 
-    @Value("${sqlserver.datasource.password}")
+    @Value("${postgresql.datasource.password}")
     private String password;
 
-    @Value("${sqlserver.datasource.driverClassName}")
+    @Value("${postgresql.datasource.driverClassName}")
     private String driverClass;
 
-    @Bean(name = "sqlserverDataSource")
-    public DataSource sqlserverDataSource() {
+    @Bean(name = "postgresqlDataSource")
+    public DataSource postgresqlDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driverClass);
         dataSource.setUrl(url);
@@ -44,18 +44,18 @@ public class SqlServerDataSourceConfig {
         return dataSource;
     }
 
-    @Bean(name = "sqlserverTransactionManager")
-    public DataSourceTransactionManager sqlserverTransactionManager() {
-        return new DataSourceTransactionManager(sqlserverDataSource());
+    @Bean(name = "postgresqlTransactionManager")
+    public DataSourceTransactionManager postgresqlTransactionManager() {
+        return new DataSourceTransactionManager(postgresqlDataSource());
     }
 
-    @Bean(name = "sqlserverSqlSessionFactory")
-    public SqlSessionFactory sqlserverSqlSessionFactory(@Qualifier("sqlserverDataSource") DataSource sqlserverDataSource)
+    @Bean(name = "postgresqlSqlSessionFactory")
+    public SqlSessionFactory postgresqlSqlSessionFactory(@Qualifier("postgresqlDataSource") DataSource postgresqlDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(sqlserverDataSource);
+        sessionFactory.setDataSource(postgresqlDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-                .getResources(SqlServerDataSourceConfig.MAPPER_LOCATION));
+                .getResources(PostgresqlDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
     }
 }

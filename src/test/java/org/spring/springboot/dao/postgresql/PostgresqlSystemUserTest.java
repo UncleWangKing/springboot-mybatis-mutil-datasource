@@ -1,4 +1,4 @@
-package org.spring.springboot.dao.sqlserver;
+package org.spring.springboot.dao.postgresql;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -6,16 +6,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.spring.springboot.Application;
 import org.spring.springboot.dao.mysql.MysqlQLSDao;
+import org.spring.springboot.domain.SystemUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 /**
  * @author ZhangDaPang 285296372@qq.com
@@ -25,21 +23,13 @@ import java.util.Random;
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class MysqlQLSTest {
+public class PostgresqlSystemUserTest {
     @Autowired
-    private MysqlQLSDao mysqlQLSDao;
+    private PostgresqlUserDao postgresqlUserDao;
 
-    /**
-     * MwEditState:,MwUserID:,YDXIAN_N:,
-     * MwMaxX:,MwMaxY:,ALT:,YDDCSXH:,JSJSSJ:,
-     * MwOID:,MwGeometry:,MwCheckedUserID:,YDH:,
-     * DCRQ:,MwMinX:,MwMinY:,KSJSSJ:,YDS:,LON:,
-     * YDJD:,YDHB:,NAME:,YDXIAN:,YDXIANG:,
-     * YDXDM:,YDWD:,YDS_N:,LAT:,
-     */
     @Test
     public void queryTest() throws Exception {
-        List<Map<String, Object>> mapList = mysqlQLSDao.queryList();
+        List<Map<String, Object>> mapList = postgresqlUserDao.queryList();
         for(Map<String, Object> map : mapList) {
             System.out.print("[");
             for (Map.Entry<String, Object> entry : map.entrySet()) {
@@ -50,10 +40,9 @@ public class MysqlQLSTest {
         }
     }
     @Test
-    public void updateTest() throws Exception {
-        List<Map<String, Object>> mapList = mysqlQLSDao.queryList();
-        for(Map<String, Object> map : mapList) {
-            System.out.println(mysqlQLSDao.update(map));
-        }
+    public void insertTest() throws Exception {
+        SystemUser systemUser = new SystemUser();
+        systemUser.setName("haha");
+        System.out.println(postgresqlUserDao.insert(systemUser));
     }
 }

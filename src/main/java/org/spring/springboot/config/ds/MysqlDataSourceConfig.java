@@ -16,28 +16,28 @@ import javax.sql.DataSource;
 
 @Configuration
 // 扫描 Mapper 接口并容器管理
-@MapperScan(basePackages = MysqlDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
+@MapperScan(basePackages = MysqlDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "mysqlSqlSessionFactory")
 public class MysqlDataSourceConfig {
 
     // 精确到 mysql 目录，以便跟其他数据源隔离
     static final String PACKAGE = "org.spring.springboot.dao.mysql";
     static final String MAPPER_LOCATION = "classpath:mapper/mysql/*.xml";
 
-    @Value("${master.datasource.url}")
+    @Value("${mysql.datasource.url}")
     private String url;
 
-    @Value("${master.datasource.username}")
+    @Value("${mysql.datasource.username}")
     private String user;
 
-    @Value("${master.datasource.password}")
+    @Value("${mysql.datasource.password}")
     private String password;
 
-    @Value("${master.datasource.driverClassName}")
+    @Value("${mysql.datasource.driverClassName}")
     private String driverClass;
 
-    @Bean(name = "masterDataSource")
+    @Bean(name = "mysqlDataSource")
     @Primary
-    public DataSource masterDataSource() {
+    public DataSource mysqlDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driverClass);
         dataSource.setUrl(url);
@@ -46,18 +46,18 @@ public class MysqlDataSourceConfig {
         return dataSource;
     }
 
-    @Bean(name = "masterTransactionManager")
+    @Bean(name = "mysqlTransactionManager")
     @Primary
-    public DataSourceTransactionManager masterTransactionManager() {
-        return new DataSourceTransactionManager(masterDataSource());
+    public DataSourceTransactionManager mysqlTransactionManager() {
+        return new DataSourceTransactionManager(mysqlDataSource());
     }
 
-    @Bean(name = "masterSqlSessionFactory")
+    @Bean(name = "mysqlSqlSessionFactory")
     @Primary
-    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource)
+    public SqlSessionFactory mysqlSqlSessionFactory(@Qualifier("mysqlDataSource") DataSource mysqlDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(masterDataSource);
+        sessionFactory.setDataSource(mysqlDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
                 .getResources(MysqlDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
