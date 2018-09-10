@@ -7,6 +7,7 @@ import org.junit.runners.MethodSorters;
 import org.spring.springboot.Application;
 import org.spring.springboot.dao.mysql.MysqlQLSDao;
 import org.spring.springboot.domain.SystemUser;
+import org.spring.springboot.service.postgresql.PostgresqlUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,6 +28,9 @@ public class PostgresqlSystemUserTest {
     @Autowired
     private PostgresqlUserDao postgresqlUserDao;
 
+    @Autowired
+    private PostgresqlUserService postgresqlUserService;
+
     @Test
     public void queryTest() throws Exception {
         List<Map<String, Object>> mapList = postgresqlUserDao.queryList();
@@ -44,5 +48,10 @@ public class PostgresqlSystemUserTest {
         SystemUser systemUser = new SystemUser();
         systemUser.setName("haha");
         System.out.println(postgresqlUserDao.insert(systemUser));
+    }
+
+    @Test
+    public void transactionalTest() throws Exception {
+        postgresqlUserService.transactionalTest();
     }
 }
