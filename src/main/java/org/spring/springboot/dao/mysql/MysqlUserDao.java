@@ -1,6 +1,7 @@
-package org.spring.springboot.dao.postgresql;
+package org.spring.springboot.dao.mysql;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.spring.springboot.domain.MysqlSystemUser;
 import org.spring.springboot.domain.PostgresqlSystemUser;
 
 import java.util.List;
@@ -11,9 +12,9 @@ import java.util.Map;
  * @date 2018/6/29 11:25
  */
 @Mapper
-public interface PostgresqlUserDao {
+public interface MysqlUserDao {
 
     List<Map<String,Object>> queryList();
 
-    Boolean insert(PostgresqlSystemUser postgresqlSystemUser);
+    Boolean insert(MysqlSystemUser mysqlSystemUser);
 }

@@ -1,7 +1,7 @@
 package org.spring.springboot.service.postgresql;
 
 import org.spring.springboot.dao.postgresql.PostgresqlUserDao;
-import org.spring.springboot.domain.SystemUser;
+import org.spring.springboot.domain.PostgresqlSystemUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,12 +17,12 @@ public class PostgresqlUserService {
 
     @Transactional
     public void transactionalTest(){
-        SystemUser systemUser = new SystemUser();
-        systemUser.setName("111");
-        System.out.println(postgresqlUserDao.insert(systemUser));
+        PostgresqlSystemUser postgresqlSystemUser = new PostgresqlSystemUser();
+        postgresqlSystemUser.setName("111");
+        System.out.println(postgresqlUserDao.insert(postgresqlSystemUser));
         if(true)
             throw new RuntimeException();
-        systemUser.setName("222");
-        System.out.println(postgresqlUserDao.insert(systemUser));
+        postgresqlSystemUser.setName("222");
+        System.out.println(postgresqlUserDao.insert(postgresqlSystemUser));
     }
 }

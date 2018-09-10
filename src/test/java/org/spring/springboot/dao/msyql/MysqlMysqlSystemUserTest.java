@@ -1,12 +1,15 @@
-package org.spring.springboot.dao.postgresql;
+package org.spring.springboot.dao.msyql;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.spring.springboot.Application;
-import org.spring.springboot.dao.mysql.MysqlQLSDao;
-import org.spring.springboot.domain.SystemUser;
+import org.spring.springboot.dao.mysql.MysqlUserDao;
+import org.spring.springboot.dao.postgresql.PostgresqlUserDao;
+import org.spring.springboot.domain.MysqlSystemUser;
+import org.spring.springboot.domain.PostgresqlSystemUser;
+import org.spring.springboot.service.mysql.MysqlUserService;
 import org.spring.springboot.service.postgresql.PostgresqlUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -24,16 +27,16 @@ import java.util.Map;
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class PostgresqlSystemUserTest {
+public class MysqlMysqlSystemUserTest {
     @Autowired
-    private PostgresqlUserDao postgresqlUserDao;
+    private MysqlUserDao mysqlUserDao;
 
     @Autowired
-    private PostgresqlUserService postgresqlUserService;
+    private MysqlUserService mysqlUserService;
 
     @Test
     public void queryTest() throws Exception {
-        List<Map<String, Object>> mapList = postgresqlUserDao.queryList();
+        List<Map<String, Object>> mapList = mysqlUserDao.queryList();
         for(Map<String, Object> map : mapList) {
             System.out.print("[");
             for (Map.Entry<String, Object> entry : map.entrySet()) {
@@ -45,13 +48,17 @@ public class PostgresqlSystemUserTest {
     }
     @Test
     public void insertTest() throws Exception {
-        SystemUser systemUser = new SystemUser();
-        systemUser.setName("haha");
-        System.out.println(postgresqlUserDao.insert(systemUser));
+        MysqlSystemUser postgresqlSystemUser = new MysqlSystemUser();
+        postgresqlSystemUser.setUsername("111");
+        postgresqlSystemUser.setPassword("password");
+        postgresqlSystemUser.setNickname("nickname");
+        postgresqlSystemUser.setGender(1);
+        postgresqlSystemUser.setEnable(1);
+        System.out.println(mysqlUserDao.insert(postgresqlSystemUser));
     }
 
     @Test
     public void transactionalTest() throws Exception {
-        postgresqlUserService.transactionalTest();
+        mysqlUserService.transactionalTest();
     }
 }
